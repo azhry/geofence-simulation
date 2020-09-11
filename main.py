@@ -14,6 +14,7 @@ pip_mask_geofence = gdf.within(mask)
 
 gdf.loc[:,'geofence'] = pip_mask_geofence
 gdf['geofence'] = gdf['geofence'].replace({True: 'In', False: 'Out'})
+print(gdf)
 fig = px.scatter_mapbox(gdf, 
                 lat='latitude', lon='longitude', 
                 color='track_id', 
@@ -22,7 +23,7 @@ fig = px.scatter_mapbox(gdf,
                 animation_group='track_id',
                 size_max=10, 
                 zoom=12, 
-                # text='time',
+                text='altitude',
                 width=1200, 
                 height=800)
 
